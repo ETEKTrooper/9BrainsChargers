@@ -13,17 +13,85 @@
     <style>
         /* Custom styling for controlling the image sizes */
         .chart-section img {
-            max-width: 100%;  /* Ensures the image does not exceed the width of the container */
-            width: 600px;     /* Set a custom width for the images */
-            height: auto;     /* Maintains the aspect ratio of the images */
-            display: block;   /* Ensures the images are block-level elements (not inline) */
-            margin: 20px auto;  /* Adds space before and after images and centers them */
+            max-width: 100%;
+            /* Ensures the image does not exceed the width of the container */
+            width: 600px;
+            /* Set a custom width for the images */
+            height: auto;
+            /* Maintains the aspect ratio of the images */
+            display: block;
+            /* Ensures the images are block-level elements (not inline) */
+            margin: 20px auto;
+            /* Adds space before and after images and centers them */
+        }
+
+        #work .image.main img {
+            width: 100%; /* Make the image take up the full width of its container */
+            max-width: 600px; /* Limit the maximum size of the image */
+            height: auto; /* Maintain the aspect ratio */
+            display: block;
+            margin: 0 auto; /* Center the image horizontally */
         }
 
         /* Adding space between titles and images */
         .chart-section h3 {
-            margin-bottom: 20px; /* Space after the title */
-            margin-top: 40px;    /* Space before the title */
+            margin-bottom: 20px;
+            /* Space after the title */
+            margin-top: 40px;
+            /* Space before the title */
+        }
+
+        .image.main {
+            width: 300px;
+            /* Adjust the width */
+            height: auto;
+            /* Adjust the height */
+            display: block;
+            margin: 0 auto 20px auto;
+        }
+
+        .chart-image {
+            width: 80%;
+            /* Adjust the width of the images (you can change this value) */
+            height: auto;
+            /* Keep aspect ratio */
+            display: block;
+            margin: 20px auto;
+            /* Centers the image and adds space around */
+            border: 4px solid #4210cb;
+            /* Adds a border */
+            padding: 5px;
+            /* Adds space between the border and the image */
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            /* Optional: Adds a subtle shadow */
+        }
+
+        nav {
+            position: relative;
+            z-index: 1000;
+            /* Ensure navigation is on top */
+        }
+
+        .video-section {
+            position: relative;
+            z-index: 1;
+            /* Ensure video doesn't overlap the nav */
+        }
+
+        #main {
+            z-index: 10;
+            position: relative;
+        }
+
+        /* Add padding between sections to avoid overlaps */
+        article {
+            padding: 50px 20px;
+        }
+
+        /* Ensure links and other elements are clickable */
+        article h2, article p {
+            position: relative;
+            z-index: 5;
         }
     </style>
 </head>
@@ -41,15 +109,17 @@
             <div class="content">
                 <div class="inner">
                     <h1>ISO 27001 Compliance</h1>
-                    <p>Empowering ChargeGuardians for ISO 27001 Success with <a href="https://9brains.us">9Brains</a>!</p>
-                    <p>Join us at 9Brains in securing our future through reliable information security practices and expert guidance.</p>
+                    <p>Empowering ChargeGuardians for ISO 27001 Success with <a href="https://9brains.us">9Brains</a>!
+                    </p>
+                    <p>Join us at 9Brains in securing our future through reliable information security practices and
+                        expert guidance.</p>
                 </div>
             </div>
             <nav>
                 <ul>
                     <li><a href="#intro">Introduction</a></li>
                     <li><a href="#work">Our Approach</a></li>
-                    <li><a href="#vanta-report">Vanta’s Report</a></li>
+                    <li><a href="#vanta-report">Compliance</a></li>
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -62,50 +132,71 @@
             <!-- Intro -->
             <article id="intro">
                 <h2 class="major">Introduction</h2>
-                <!-- Image Path from images folder -->
-                <span class="image main"><img src="images/pic01.jpg" alt="ISO 27001 Overview" /></span>
-                <p>ISO 27001 is essential for organizations looking to protect their information assets. 9Brains guides you through the process of achieving compliance and establishing a strong culture of security.</p>
+                <!-- Image section -->
+                <span class="image main">
+                    <img src="images/intro.png" alt="ISO 27001 Overview" />
+                </span>
+                <!-- Text below the image -->
+                <p>At 9Brains, our team is dedicated to helping organizations protect their information assets by guiding them through the ISO 27001 compliance process and fostering a strong culture of security.</p>
             </article>
 
             <!-- Work -->
             <article id="work">
                 <h2 class="major">Our Approach</h2>
                 <!-- Image Path from images folder -->
-                <span class="image main"><img src="images/pic02.jpg" alt="Our Approach" /></span>
-                <p>At 9Brains, we implement dependable practices and frameworks that ensure your organization meets the requirements of ISO 27001. Our services include risk assessments, policy development, and employee training.</p>
+                <span class="image main">
+                    <img src="images/approach.jpg" alt="Our Approach" />
+                </span>
+                <p>At 9Brains, our team is dedicated to helping organizations protect their information assets by guiding them through the ISO 27001 compliance process and fostering a strong culture of security.</p>
+                <!-- Video Section using Google Drive link -->
+                <section class="video-section" id="approach-video" style="text-align: center; margin-top: 30px;">
+                    <h3>Tool Proficiency Report and Sample Outputs</h3>
+                    <iframe src="https://drive.google.com/file/d/1IbKN2nCp-M3vTs_MXvFmlD2juWBWWyTl/preview" 
+                        width="560" 
+                        height="400" 
+                        style="max-width: 100%; border: 4px solid blue; object-fit: fill;" 
+                        allow="autoplay; fullscreen" 
+                        allowfullscreen>
+                    </iframe>
+                </section>
+
             </article>
 
             <!-- Vanta Report -->
             <article id="vanta-report">
-                <h2 class="major">Vanta Compliance Report</h2>
-                <p>This report presents the current compliance status of Roughnecks Construction Inc., based on ISO 27001 standards. Below is a summary of the key metrics we have monitored:</p>
+                <h2 class="major">Case Study</h2>
+                <p>This report presents the current compliance status of Roughnecks Construction Inc., based on ISO
+                    27001 standards. Below is a summary of the key metrics we have monitored:</p>
 
                 <h3>Key Metrics</h3>
                 <ul>
-                    <li><strong>Risk Over Time:</strong> The number of risks has steadily decreased, with a significant reduction in high and critical risks by December.</li>
-                    <li><strong>Framework Progress:</strong> Compliance with ISO 27001 is currently at 75%, showing consistent progress towards full certification.</li>
-                    <li><strong>Test Remediation:</strong> 80% of tests were completed on time, with the remainder being addressed promptly.</li>
+                    <li><strong>Risk Over Time:</strong> The number of risks has steadily decreased, with a significant
+                        reduction in high and critical risks by December.</li>
+                    <li><strong>Framework Progress:</strong> Compliance with ISO 27001 is currently at 75%, showing
+                        consistent progress towards full certification.</li>
+                    <li><strong>Test Remediation:</strong> 80% of tests were completed on time, with the remainder being
+                        addressed promptly.</li>
                 </ul>
 
                 <section class="chart-section" id="framework-progress">
                     <h3>Framework Progress</h3>
-                    <img src="images/framework.png" alt="Framework Progress Chart">
+                    <img src="images/framework.png" alt="Framework Progress Chart" class="chart-image">
                 </section>
 
                 <section class="chart-section" id="test-remediation">
                     <h3>Program Test Item Completion Rate</h3>
-                    <img src="images/comp.png" alt="Test Completion Chart">
+                    <img src="images/comp.png" alt="Test Completion Chart" class="chart-image">
                 </section>
 
                 <section class="chart-section" id="control-assignments">
                     <h3>Control Assignment Timeline</h3>
-                    <img src="images/control.png" alt="Control Assignment Timeline Chart">
+                    <img src="images/control.png" alt="Control Assignment Timeline Chart" class="chart-image">
                 </section>
 
                 <section class="chart-section" id="roi">
                     <h3>Return on Investment (ROI)</h3>
                     <p>By using Vanta’s automated compliance tracking, Roughnecks Construction Inc. unlocked $82,978 in additional revenue and saved $201,463 in associated compliance costs.</p>
-                    <img src="images/roi.png" alt="Return on Investment Chart">
+                    <img src="images/roi.png" alt="Return on Investment Chart" class="chart-image">
                 </section>
             </article>
 
@@ -113,41 +204,53 @@
             <article id="about">
                 <h2 class="major">About Us</h2>
                 <!-- Image Path from images folder -->
-                <span class="image main"><img src="images/pic03.jpg" alt="About ChargeGuardians" /></span>
-                <p>ChargeGuardians consists of experienced professionals dedicated to helping organizations achieve ISO 27001 compliance. We believe in a proactive approach to information security.</p>
+                <span class="image main" style="display: flex; justify-content: center;">
+                    <img src="images/5471.jpg" alt="About ChargeGuardians" style="width: 98%; height: auto;" />
+                </span>
+                <p>ChargeGuardians consists of experienced professionals dedicated to helping organizations achieve ISO
+                    27001 compliance. We believe in a proactive approach to information security.</p>
 
                 <!-- Team Section -->
                 <div class="team">
                     <h3>Meet Our Team</h3>
                     <div class="team-member">
                         <!-- Image Path from images folder -->
-                        <img src="images/3666.jpg" alt="Team Member 1" class="team-img" style="width: 120px; height: 120px; border-radius: 30%;" />
+                        <img src="images/dante.jpg" alt="Team Member 1" class="team-img"
+                            style="width: 120px; height: 120px; border-radius: 30%;" />
                         <h4>Dante Chin-Clauden</h4>
-                        <p>Dante is the Lead Security Consultant with over 10 years of experience in information security and risk management.</p>
+                        <p>Dante is the Lead Security Consultant with over 10 years of experience in information
+                            security and risk management.</p>
                     </div>
                     <div class="team-member">
                         <!-- Image Path from images folder -->
-                        <img src="images/3666.jpg" alt="Team Member 2" class="team-img" style="width: 120px; height: 120px; border-radius: 30%;" />
+                        <img src="images/clark.jpg" alt="Team Member 2" class="team-img"
+                            style="width: 120px; height: 120px; border-radius: 30%;" />
                         <h4>Guillermo Clark</h4>
-                        <p>Guillermo is our Compliance Specialist, ensuring that every project meets the highest standards of security compliance.</p>
+                        <p>Guillermo is our Compliance Specialist, ensuring that every project meets the highest
+                            standards of security compliance.</p>
                     </div>
                     <div class="team-member">
                         <!-- Image Path from images folder -->
-                        <img src="images/3666.jpg" alt="Team Member 3" class="team-img" style="width: 120px; height: 120px; border-radius: 30%;" />
+                        <img src="images/kehinde.jpg" alt="Team Member 3" class="team-img"
+                            style="width: 120px; height: 120px; border-radius: 30%;" />
                         <h4>Kehinde Fabiyi</h4>
-                        <p>Kehinde is the Technical Lead with a deep background in cybersecurity and network defense strategies.</p>
+                        <p>Kehinde is the Technical Lead with a deep background in cybersecurity and network defense
+                            strategies.</p>
                     </div>
                     <div class="team-member">
                         <!-- Image Path from images folder -->
-                        <img src="images/3666.jpg" alt="Team Member 4" class="team-img" style="width: 120px; height: 120px; border-radius: 30%;" />
+                        <img src="images/avatar1.png" alt="Team Member 4" class="team-img"
+                            style="width: 120px; height: 120px; border-radius: 30%;" />
                         <h4>Cindy Luoung</h4>
                         <p>Cindy is a Senior Consultant specializing in data protection and privacy law compliance.</p>
                     </div>
                     <div class="team-member">
                         <!-- Image Path from images folder -->
-                        <img src="images/3666.jpg" alt="Team Member 5" class="team-img" style="width: 120px; height: 120px; border-radius: 30%;" />
+                        <img src="images/jarrell.jpg" alt="Team Member 5" class="team-img"
+                            style="width: 120px; height: 120px; border-radius: 30%;" />
                         <h4>Jarrell Matos</h4>
-                        <p>Jarrell handles client relations and project management, ensuring smooth communication and project delivery.</p>
+                        <p>Jarrell handles client relations and project management, ensuring smooth communication and
+                            project delivery.</p>
                     </div>
                 </div>
             </article>
