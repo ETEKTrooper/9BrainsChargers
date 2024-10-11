@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Simple Picture Page</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #43afaf; /* Light grey background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full height viewport */
+            flex-direction: column; /* Align items vertically */
+        }
+
+        .image-container {
+            text-align: center;
+        }
+
+        .image-container img {
+            max-width: 90%; /* Adjust the size of the image */
+            height: auto;
+            border: 2px solid #992020; /* Add a border around the image */
+            border-radius: 10px; /* Slight rounded corners */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow to the image */
+        }
+
+        .audio-container {
+            margin-top: 20px; /* Add some space between image and audio controls */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="image-container">
+        <h1>Podcast</h1>
+        <!-- Replace 'your-image.jpg' with the actual path to your image -->
+        <img src="images/podcast.jpg" alt="Simple Picture">
+
+        <div class="audio-container">
+            <!-- Add your .wav file here -->
+            <!-- Replace 'your-audio-file.wav' with the actual path to your wav file -->
+            <audio controls>
+                <source src="images/podcast.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+
+</body>
+
+</html>
