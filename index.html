@@ -14,68 +14,50 @@
         /* Custom styling for controlling the image sizes */
         .chart-section img {
             max-width: 100%;
-            /* Ensures the image does not exceed the width of the container */
             width: 600px;
-            /* Set a custom width for the images */
             height: auto;
-            /* Maintains the aspect ratio of the images */
             display: block;
-            /* Ensures the images are block-level elements (not inline) */
             margin: 20px auto;
-            /* Adds space before and after images and centers them */
         }
 
         #work .image.main img {
-            width: 100%; /* Make the image take up the full width of its container */
-            max-width: 600px; /* Limit the maximum size of the image */
-            height: auto; /* Maintain the aspect ratio */
+            width: 100%;
+            max-width: 600px;
+            height: auto;
             display: block;
-            margin: 0 auto; /* Center the image horizontally */
+            margin: 0 auto;
         }
 
-        /* Adding space between titles and images */
         .chart-section h3 {
             margin-bottom: 20px;
-            /* Space after the title */
             margin-top: 40px;
-            /* Space before the title */
         }
 
         .image.main {
             width: 300px;
-            /* Adjust the width */
             height: auto;
-            /* Adjust the height */
             display: block;
             margin: 0 auto 20px auto;
         }
 
         .chart-image {
             width: 80%;
-            /* Adjust the width of the images (you can change this value) */
             height: auto;
-            /* Keep aspect ratio */
             display: block;
             margin: 20px auto;
-            /* Centers the image and adds space around */
             border: 4px solid #4210cb;
-            /* Adds a border */
             padding: 5px;
-            /* Adds space between the border and the image */
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            /* Optional: Adds a subtle shadow */
         }
 
         nav {
             position: relative;
             z-index: 1000;
-            /* Ensure navigation is on top */
         }
 
         .video-section {
             position: relative;
             z-index: 1;
-            /* Ensure video doesn't overlap the nav */
         }
 
         #main {
@@ -83,17 +65,141 @@
             position: relative;
         }
 
-        /* Add padding between sections to avoid overlaps */
         article {
             padding: 50px 20px;
         }
 
-        /* Ensure links and other elements are clickable */
-        article h2, article p {
+        article h2,
+        article p {
             position: relative;
             z-index: 5;
         }
+
+        /* Styles for the Policy Wizard */
+        .wizard-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .wizard-step {
+            display: none;
+        }
+
+        .wizard-step.active {
+            display: block;
+        }
+
+        .wizard-buttons {
+            margin-top: 20px;
+        }
+
+        .wizard-buttons button {
+            margin-right: 10px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            margin-top: 5px;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        /* Menu bar styles */
+        nav ul li a {
+            display: block; /* Ensures the link takes up the entire area */
+            color: #ffffff; /* Default text color */
+            padding: 10px 20px; /* Adjust the padding to suit the size you want */
+            background-color: #000000; /* Default background color for the menu item */
+            text-decoration: none;
+            border-radius: 5px; /* Optional: Adds rounded corners */
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+        }
+
+        /* Hover effect for the menu items */
+        nav ul li a:hover {
+            background-color: #46ff03; /* Change this to the box color you want on hover */
+            color: #6bfd03; /* Change the text color when hovered */
+        }
+
+        /* Ensure the generated policy text is visible */
+        #policyOutput {
+            border: 1px solid #ccc;
+            padding: 15px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* Style for each policy section header */
+        #policyOutput h3,
+        #policyOutput h4 {
+            color: #333;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        #policyOutput p {
+            margin-bottom: 10px;
+        }
+
+        /* Make radio buttons clearly visible */
+        .radio-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .radio-group label {
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+
+        .tooltip {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .tooltip:hover::after {
+            content: attr(title); /* Dynamically takes the title attribute content */
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 150%; /* Adjusts the position to appear above */
+            background-color: #46ff03;
+            color: #000000;
+            padding: 8px;
+            border-radius: 5px;
+            white-space: nowrap;
+            font-size: 16px; /* Adjusted font size for better fit */
+            z-index: 100;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow */
+        }
+        
+        .tooltip:hover::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 100%; /* Arrow positioning */
+            transform: translateX(-50%);
+            border-width: 9px;
+            border-style: solid;
+            border-color: transparent transparent #01fe01 transparent;
+            z-index: 100;
+        }
+        
     </style>
+
 </head>
 
 <body class="is-preload">
@@ -121,10 +227,9 @@
                     <li><a href="#work">Our Approach</a></li>
                     <li><a href="#vanta-report">Compliance</a></li>
                     <li><a href="#gap-analysis">Gap Analysis</a></li>
+                    <li><a href="#policy">Policy Drafting</a></li>
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    
-
                 </ul>
             </nav>
         </header>
@@ -140,10 +245,12 @@
                     <img src="images/intro.png" alt="ISO 27001 Overview" />
                 </span>
                 <!-- Text below the image -->
-                <p>At 9Brains, our team is dedicated to helping organizations protect their information assets by guiding them through the ISO 27001 compliance process and fostering a strong culture of security.</p>
+                <p>At 9Brains, our team is dedicated to helping organizations protect their information assets by
+                    guiding them through the ISO 27001 compliance process and fostering a strong culture of security.
+                </p>
             </article>
 
-            
+
             <!-- Work -->
             <article id="work">
                 <h2 class="major">Our Approach</h2>
@@ -151,75 +258,91 @@
                 <span class="image main">
                     <img src="images/approach.jpg" alt="Our Approach" />
                 </span>
-                <p>At 9Brains, our team is dedicated to helping organizations protect their information assets by guiding them through the ISO 27001 compliance process and fostering a strong culture of security.</p>
+                <p>At 9Brains, our team is dedicated to helping organizations protect their information assets by
+                    guiding them through the ISO 27001 compliance process and fostering a strong culture of security.
+                </p>
                 <!-- Video Section using Google Drive link -->
                 <section class="video-section" id="approach-video" style="text-align: center; margin-top: 30px;">
                     <h3>Tool Proficiency Report and Sample Outputs</h3>
-                    <iframe src="https://drive.google.com/file/d/1IbKN2nCp-M3vTs_MXvFmlD2juWBWWyTl/preview" 
-                        width="560" 
-                        height="400" 
-                        style="max-width: 100%; border: 4px solid blue; object-fit: fill;" 
-                        allow="autoplay; fullscreen" 
-                        allowfullscreen>
+                    <iframe src="https://drive.google.com/file/d/1IbKN2nCp-M3vTs_MXvFmlD2juWBWWyTl/preview" width="560"
+                        height="400" style="max-width: 100%; border: 4px solid blue; object-fit: fill;"
+                        allow="autoplay; fullscreen" allowfullscreen>
                     </iframe>
                 </section>
 
             </article>
-<!-- Gap Analysis -->
-<article id="gap-analysis" style="text-align: center;">
-    <h2 class="major" style="font-size: 0.7em; text-align: center;">Gap Analysis: Roughnecks Construction Inc.</h2>
-    <p>This gap analysis identifies the current compliance gaps at Roughnecks Construction Inc., based on the INKSPOT methodology and utilizing the Vanta tool.</p>
+            <!-- Gap Analysis -->
+            <article id="gap-analysis" style="text-align: center;">
+                <h2 class="major" style="font-size: 0.7em; text-align: center;">Gap Analysis: Roughnecks Construction
+                    Inc.</h2>
+                <p>This gap analysis identifies the current compliance gaps at Roughnecks Construction Inc., based on
+                    the INKSPOT methodology and utilizing the Vanta tool.</p>
 
-    <h3>Key Areas of Analysis</h3>
-    <table style="border-collapse: collapse; width: 100%; text-align: left;">
-        <thead>
-            <tr>
-                <th style="border: 1px solid rgb(30, 253, 0); padding: 8px;">Area</th>
-                <th style="border: 1px solid rgb(30, 253, 0); padding: 8px;">Current State (Gap)</th>
-                <th style="border: 1px solid rgb(30, 253, 0); padding: 8px;">Desired State (Goal)</th>
-                <th style="border: 1px solid rgb(30, 253, 0); padding: 8px;">INKSPOT and Vanta Solutions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;">Governance</td>
-                <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;">Fragmented oversight, no alignment with business goals.</td>
-                <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;">Integrated governance aligned with business strategy.</td>
-                <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;"><strong>INKSPOT:</strong> Embeds security in planning.<br><strong>Vanta:</strong> Automates task assignments.</td>
-            </tr>
-            <tr>
-                <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;">Risk Management</td>
-                <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;">Slow response, manual risk tracking.</td>
-                <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;">Proactive, real-time risk management.</td>
-                <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;"><strong>INKSPOT:</strong> Adapts to risk.<br><strong>Vanta:</strong> Real-time threat monitoring.</td>
-            </tr>
-            <tr>
-                <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;">Compliance Processes</td>
-                <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;">Manual, fragmented tracking.</td>
-                <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;">Automated, streamlined workflows.</td>
-                <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;"><strong>INKSPOT:</strong> Optimizes workflows.<br><strong>Vanta:</strong> Automates compliance tasks.</td>
-            </tr>
-            <tr>
-                <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;">Adaptability</td>
-                <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;">Difficulty adapting to regulatory changes.</td>
-                <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;">Agile, adaptive compliance.</td>
-                <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;"><strong>INKSPOT:</strong> Quick process updates.<br><strong>Vanta:</strong> Auto-updates regulatory requirements.</td>
-            </tr>
-        </tbody>
-    </table>
+                <h3>Key Areas of Analysis</h3>
+                <table style="border-collapse: collapse; width: 100%; text-align: left;">
+                    <thead>
+                        <tr>
+                            <th style="border: 1px solid rgb(30, 253, 0); padding: 8px;">Area</th>
+                            <th style="border: 1px solid rgb(30, 253, 0); padding: 8px;">Current State (Gap)</th>
+                            <th style="border: 1px solid rgb(30, 253, 0); padding: 8px;">Desired State (Goal)</th>
+                            <th style="border: 1px solid rgb(30, 253, 0); padding: 8px;">INKSPOT and Vanta Solutions
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;">Governance</td>
+                            <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;">Fragmented oversight, no
+                                alignment with business goals.</td>
+                            <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;">Integrated governance aligned
+                                with business strategy.</td>
+                            <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;"><strong>INKSPOT:</strong>
+                                Embeds security in planning.<br><strong>Vanta:</strong> Automates task assignments.</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;">Risk Management</td>
+                            <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;">Slow response, manual risk
+                                tracking.</td>
+                            <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;">Proactive, real-time risk
+                                management.</td>
+                            <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;"><strong>INKSPOT:</strong>
+                                Adapts to risk.<br><strong>Vanta:</strong> Real-time threat monitoring.</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;">Compliance Processes</td>
+                            <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;">Manual, fragmented tracking.
+                            </td>
+                            <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;">Automated, streamlined
+                                workflows.</td>
+                            <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;"><strong>INKSPOT:</strong>
+                                Optimizes workflows.<br><strong>Vanta:</strong> Automates compliance tasks.</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;">Adaptability</td>
+                            <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;">Difficulty adapting to
+                                regulatory changes.</td>
+                            <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;">Agile, adaptive compliance.
+                            </td>
+                            <td style="border: 1px solid rgb(30, 253, 0); padding: 8px;"><strong>INKSPOT:</strong> Quick
+                                process updates.<br><strong>Vanta:</strong> Auto-updates regulatory requirements.</td>
+                        </tr>
+                    </tbody>
+                </table>
 
-    <h3>Key Benefits</h3>
-    <ul>
-        <li><strong>Vanta’s Governance Automation:</strong> Assigns roles and tracks security-related tasks to enhance governance, cutting compliance costs by $201,000.</li>
-        <li><strong>Proactive Risk Management:</strong> Uses Vanta’s continuous monitoring and alert system to respond swiftly to emerging threats, improving risk mitigation and responsiveness.</li>
-        <li><strong>Streamlined Compliance:</strong> Automates workflows and evidence collection, improving audit readiness and reducing preparation time, with a 75% compliance rate achieved.</li>
-        <li><strong>Cost and Efficiency Gains:</strong> Vanta reduces manual work and enhances security processes, providing over $200,000 in savings on compliance costs annually.</li>
-    </ul>
-    <p>For more information, visit our <a href="gapanalysis.html">detailed gap analysis page</a>.</p>
+                <h3>Key Benefits</h3>
+                <ul>
+                    <li><strong>Vanta’s Governance Automation:</strong> Assigns roles and tracks security-related tasks
+                        to enhance governance, cutting compliance costs by $201,000.</li>
+                    <li><strong>Proactive Risk Management:</strong> Uses Vanta’s continuous monitoring and alert system
+                        to respond swiftly to emerging threats, improving risk mitigation and responsiveness.</li>
+                    <li><strong>Streamlined Compliance:</strong> Automates workflows and evidence collection, improving
+                        audit readiness and reducing preparation time, with a 75% compliance rate achieved.</li>
+                    <li><strong>Cost and Efficiency Gains:</strong> Vanta reduces manual work and enhances security
+                        processes, providing over $200,000 in savings on compliance costs annually.</li>
+                </ul>
+                <p>For more information, visit our <a href="gapanalysis.html">detailed gap analysis page</a>.</p>
 
-</article>
-
-
+            </article>
 
             <!-- Vanta Report -->
             <article id="vanta-report">
@@ -238,10 +361,10 @@
                 </ul>
 
                 <section class="chart-section" id="risk"></section>
-                    <h3>Inherit Risk</h3>
-                    <img src="images/risk.png" alt="Test Completion Chart" class="chart-image">
+                <h3>Inherit Risk</h3>
+                <img src="images/risk.png" alt="Test Completion Chart" class="chart-image">
                 </section>
-                                
+
                 <section class="chart-section" id="framework-progress">
                     <h3>Framework Progress</h3>
                     <img src="images/framework.png" alt="Framework Progress Chart" class="chart-image">
@@ -259,12 +382,13 @@
 
                 <section class="chart-section" id="roi">
                     <h3>Return on Investment (ROI)</h3>
-                    <p>By using Vanta’s automated compliance tracking, Roughnecks Construction Inc. unlocked $82,978 in additional revenue and saved $201,463 in associated compliance costs.</p>
+                    <p>By using Vanta’s automated compliance tracking, Roughnecks Construction Inc. unlocked $82,978 in
+                        additional revenue and saved $201,463 in associated compliance costs.</p>
                     <img src="images/roi.png" alt="Return on Investment Chart" class="chart-image">
                 </section>
             </article>
 
-            
+
             <!-- About -->
             <article id="about">
                 <h2 class="major">About Us</h2>
@@ -351,6 +475,279 @@
                 </ul>
             </article>
 
+            <!-- Policy Drafting Assignment Section with Wizard -->
+            <article id="policy" class="policy">
+                <h2 class="major">Policy Drafting Assignment</h2>
+                <p>As part of our commitment to aligning with the ISO 27001 framework, this policy wizard will guide you through drafting essential policies that support the required controls for information security management. These policies are crucial in helping ChargeGuardians meet its compliance objectives and maintain a robust and secure information security posture in line with ISO 27001 standards.</p>
+
+                <!-- Wizard Container -->
+                <div class="wizard-container">
+                    <h3>Create Your Policies Using the Wizard</h3>
+                    <div id="wizard">
+                        <!-- Step 1 -->
+                <div class="wizard-step active" data-step="1">
+                    <h4 class="tooltip" title="Select which policy you would like to draft.">Step 1: Choose a Policy to Draft</h4>
+                    <div class="radio-group">
+                        <input type="radio" id="infoSecurity" name="policyType" value="Information Security Policy">
+                        <label for="infoSecurity">Information Security Policy</label>
+                    </div>
+                    <div class="radio-group">
+                        <input type="radio" id="accessControl" name="policyType" value="Access Control Policy">
+                        <label for="accessControl">Access Control Policy</label>
+                    </div>
+                    <div class="wizard-buttons">
+                        <button type="button" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="wizard-step" data-step="2">
+                    <h4 class="tooltip" title="Enter the name of the person responsible for this policy.">Step 2: Policy Owner</h4>
+                    <label for="policyOwner">Policy Owner:</label>
+                    <input type="text" id="policyOwner" placeholder="Enter the policy owner's name...">
+                    <div class="wizard-buttons">
+                        <button type="button" onclick="prevStep()">Back</button>
+                        <button type="button" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="wizard-step" data-step="3">
+                    <h4 class="tooltip" title="Specify the date when the policy will become effective.">Step 3: Effective Date</h4>
+                    <label for="effectiveDate">Effective Date:</label>
+                    <input type="text" id="effectiveDate" placeholder="Enter the effective date...">
+                    <div class="wizard-buttons">
+                        <button type="button" onclick="prevStep()">Back</button>
+                        <button type="button" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="wizard-step" data-step="4">
+                    <h4 class="tooltip" title="Explain the purpose and objective of this policy.">Step 4: Purpose</h4>
+                    <label for="purpose">Purpose:</label>
+                    <textarea id="purpose" rows="4" placeholder="Enter the purpose of the policy..."></textarea>
+                    <div class="wizard-buttons">
+                        <button type="button" onclick="prevStep()">Back</button>
+                        <button type="button" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="wizard-step" data-step="5">
+                    <h4 class="tooltip" title="Describe which systems, employees, or processes this policy applies to.">Step 5: Scope</h4>
+                    <label for="scope">Scope:</label>
+                    <textarea id="scope" rows="4" placeholder="Define the scope of the policy..."></textarea>
+                    <div class="wizard-buttons">
+                        <button type="button" onclick="prevStep()">Back</button>
+                        <button type="button" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+
+                <!-- Step 6 -->
+                <div class="wizard-step" data-step="6">
+                    <h4 class="tooltip" title="List the general requirements for the policy, such as security practices.">Step 6: General Requirements</h4>
+                    <label for="generalRequirements">General Requirements:</label>
+                    <textarea id="generalRequirements" rows="4" placeholder="Enter the general requirements..."></textarea>
+                    <div class="wizard-buttons">
+                        <button type="button" onclick="prevStep()">Back</button>
+                        <button type="button" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+
+                <!-- Step 7 -->
+                <div class="wizard-step" data-step="7">
+                    <h4 class="tooltip" title="State the business requirements of the policy, including access controls.">Step 7: Business Requirements</h4>
+                    <label for="businessRequirements">Business Requirements:</label>
+                    <textarea id="businessRequirements" rows="4" placeholder="Define the business requirements..."></textarea>
+                    <div class="wizard-buttons">
+                        <button type="button" onclick="prevStep()">Back</button>
+                        <button type="button" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+
+                <!-- Step 8 -->
+                <div class="wizard-step" data-step="8">
+                    <h4 class="tooltip" title="Define the role-based access control (RBAC) method to be used.">Step 8: Role-Based Access Control (RBAC)</h4>
+                    <label for="rbac">RBAC Implementation:</label>
+                    <textarea id="rbac" rows="4" placeholder="Explain the RBAC approach..."></textarea>
+                    <div class="wizard-buttons">
+                        <button type="button" onclick="prevStep()">Back</button>
+                        <button type="button" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+
+                <!-- Step 9 -->
+                <div class="wizard-step" data-step="9">
+                    <h4 class="tooltip" title="Explain the use of multi-factor authentication (MFA) in this policy.">Step 9: Multi-Factor Authentication (MFA)</h4>
+                    <label for="mfa">MFA Requirements:</label>
+                    <textarea id="mfa" rows="4" placeholder="Define the MFA requirements..."></textarea>
+                    <div class="wizard-buttons">
+                        <button type="button" onclick="prevStep()">Back</button>
+                        <button type="button" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+
+                <!-- Step 10 -->
+                <div class="wizard-step" data-step="10">
+                    <h4 class="tooltip" title="Detail the requirements for accessing company networks and resources.">Step 10: Access to Networks</h4>
+                    <label for="networkAccess">Network Access Requirements:</label>
+                    <textarea id="networkAccess" rows="4" placeholder="Enter network access details..."></textarea>
+                    <div class="wizard-buttons">
+                        <button type="button" onclick="prevStep()">Back</button>
+                        <button type="button" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+
+                <!-- Step 11 -->
+                <div class="wizard-step" data-step="11">
+                    <h4 class="tooltip" title="Specify customer access management procedures.">Step 11: Customer Access Management</h4>
+                    <label for="customerAccess">Customer Access Management:</label>
+                    <textarea id="customerAccess" rows="4" placeholder="Describe customer access management..."></textarea>
+                    <div class="wizard-buttons">
+                        <button type="button" onclick="prevStep()">Back</button>
+                        <button type="button" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+
+                <!-- Step 12 -->
+                <div class="wizard-step" data-step="12">
+                    <h4 class="tooltip" title="Outline the rules and responsibilities for user access management.">Step 12: User Access Management</h4>
+                    <label for="userAccessManagement">User Access Management:</label>
+                    <textarea id="userAccessManagement" rows="4" placeholder="Define user access management..."></textarea>
+                    <div class="wizard-buttons">
+                        <button type="button" onclick="prevStep()">Back</button>
+                        <button type="button" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+
+                <!-- Step 13 -->
+                <div class="wizard-step" data-step="13">
+                    <h4 class="tooltip" title="Describe the process for user registration and deregistration.">Step 13: User Registration and Deregistration</h4>
+                    <label for="userRegistration">User Registration and Deregistration:</label>
+                    <textarea id="userRegistration" rows="4" placeholder="Describe user registration and deregistration..."></textarea>
+                    <div class="wizard-buttons">
+                        <button type="button" onclick="prevStep()">Back</button>
+                        <button type="button" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+
+                <!-- Step 14 -->
+                <div class="wizard-step" data-step="14">
+                    <h4 class="tooltip" title="Explain how user access will be provisioned and maintained.">Step 14: User Access Provisioning</h4>
+                    <label for="userAccessProvisioning">User Access Provisioning:</label>
+                    <textarea id="userAccessProvisioning" rows="4" placeholder="Explain user access provisioning..."></textarea>
+                    <div class="wizard-buttons">
+                        <button type="button" onclick="prevStep()">Back</button>
+                        <button type="button" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+
+                <!-- Step 15 -->
+                <div class="wizard-step" data-step="15">
+                    <h4 class="tooltip" title="Define how privileged access will be managed and controlled.">Step 15: Privileged Access Management</h4>
+                    <label for="privilegedAccess">Privileged Access Management:</label>
+                    <textarea id="privilegedAccess" rows="4" placeholder="Describe privileged access management..."></textarea>
+                    <div class="wizard-buttons">
+                        <button type="button" onclick="prevStep()">Back</button>
+                        <button type="button" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+
+                <!-- Step 16 -->
+                <div class="wizard-step" data-step="16">
+                    <h4 class="tooltip" title="Detail the process for reviewing user access on a regular basis.">Step 16: User Access Reviews</h4>
+                    <label for="userAccessReviews">User Access Reviews:</label>
+                    <textarea id="userAccessReviews" rows="4" placeholder="Explain user access review processes..."></textarea>
+                    <div class="wizard-buttons">
+                        <button type="button" onclick="prevStep()">Back</button>
+                        <button type="button" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+
+                <!-- Step 17 -->
+                <div class="wizard-step" data-step="17">
+                    <h4 class="tooltip" title="Explain how access rights will be removed or adjusted when necessary.">Step 17: Removal & Adjustment of Access Rights</h4>
+                    <label for="accessRights">Access Rights Removal/Adjustment:</label>
+                    <textarea id="accessRights" rows="4" placeholder="Describe access rights removal/adjustment..."></textarea>
+                    <div class="wizard-buttons">
+                        <button type="button" onclick="prevStep()">Back</button>
+                        <button type="button" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+
+                <!-- Step 18 -->
+                <div class="wizard-step" data-step="18">
+                    <h4 class="tooltip" title="Describe how segregation of duties will be implemented to avoid conflicts of interest.">Step 18: Segregation of Duties</h4>
+                    <label for="segregationOfDuties">Segregation of Duties:</label>
+                    <textarea id="segregationOfDuties" rows="4" placeholder="Define segregation of duties..."></textarea>
+                    <div class="wizard-buttons">
+                        <button type="button" onclick="prevStep()">Back</button>
+                        <button type="button" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+
+                <!-- Step 19 -->
+                <div class="wizard-step" data-step="19">
+                    <h4 class="tooltip" title="Provide the details for the organization's password policy.">Step 19: Password Policy</h4>
+                    <label for="passwordPolicy">Password Policy:</label>
+                    <textarea id="passwordPolicy" rows="4" placeholder="Define the password policy..."></textarea>
+                    <div class="wizard-buttons">
+                        <button type="button" onclick="prevStep()">Back</button>
+                        <button type="button" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+
+                <!-- Step 20 -->
+                <div class="wizard-step" data-step="20">
+                    <h4 class="tooltip" title="Define the restrictions on accessing sensitive information.">Step 20: Information Access Restriction</h4>
+                    <label for="accessRestriction">Information Access Restriction:</label>
+                    <textarea id="accessRestriction" rows="4" placeholder="Describe information access restrictions..."></textarea>
+                    <div class="wizard-buttons">
+                        <button type="button" onclick="prevStep()">Back</button>
+                        <button type="button" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+
+                <!-- Step 21 -->
+                <div class="wizard-step" data-step="21">
+                    <h4 class="tooltip" title="Outline the procedures for secure log-on to systems.">Step 21: Secure Log-on Procedures</h4>
+                    <label for="secureLogon">Secure Log-on Procedures:</label>
+                    <textarea id="secureLogon" rows="4" placeholder="Explain secure log-on procedures..."></textarea>
+                    <div class="wizard-buttons">
+                        <button type="button" onclick="prevStep()">Back</button>
+                        <button type="button" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+
+                <!-- Step 22 -->
+                <div class="wizard-step" data-step="22">
+                    <h4 class="tooltip" title="Explain how privileged utility programs will be used securely.">Step 22: Use of Privileged Utility Programs</h4>
+                    <label for="privilegedPrograms">Privileged Utility Programs:</label>
+                    <textarea id="privilegedPrograms" rows="4" placeholder="Describe the use of privileged utility programs..."></textarea>
+                    <div class="wizard-buttons">
+                        <button type="button" onclick="prevStep()">Back</button>
+                        <button type="button" onclick="generatePolicy(); generatePDF();">Generate Policy & Download PDF</button>
+                    </div>
+                </div>
+
+
+
+                        <!-- Policy Output -->
+                        <div class="wizard-step" data-step="23">
+                            <h4>Your Drafted Policy</h4>
+                            <div id="policyOutput">
+                                <!-- The generated policy will appear here -->
+                            </div>
+                            <div class="wizard-buttons">
+                                <button type="button" onclick="prevStep()">Back</button>
+                                <button type="button" onclick="submitPolicy()">Submit Policy Draft</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
         </div>
 
         <!-- Footer -->
@@ -369,6 +766,189 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+
+    <!-- Custom Script for the Wizard -->
+    <script>
+        let currentStep = 1;
+
+        function showStep(step) {
+            $('.wizard-step').removeClass('active');
+            $('.wizard-step[data-step="' + step + '"]').addClass('active');
+        }
+
+        function nextStep() {
+            const totalSteps = 23;  // Update this to include step 23 for policy output
+            if (currentStep < totalSteps) {
+                currentStep++;
+                showStep(currentStep);
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                showStep(currentStep);
+            }
+        }
+
+        function generatePolicy() {
+            // Gather all inputs from the previous steps
+            const policyType = $('input[name="policyType"]:checked').val();
+            const policyOwner = $('#policyOwner').val();
+            const effectiveDate = $('#effectiveDate').val();
+            const purpose = $('#purpose').val();
+            const scope = $('#scope').val();
+            const generalRequirements = $('#generalRequirements').val();
+            const businessRequirements = $('#businessRequirements').val();
+            const rbac = $('#rbac').val();
+            const mfa = $('#mfa').val();
+            const networkAccess = $('#networkAccess').val();
+            const customerAccess = $('#customerAccess').val();
+            const userAccessManagement = $('#userAccessManagement').val();
+            const userRegistration = $('#userRegistration').val();
+            const userAccessProvisioning = $('#userAccessProvisioning').val();
+            const privilegedAccess = $('#privilegedAccess').val();
+            const userAccessReviews = $('#userAccessReviews').val();
+            const accessRights = $('#accessRights').val();
+            const segregationOfDuties = $('#segregationOfDuties').val();
+            const passwordPolicy = $('#passwordPolicy').val();
+            const accessRestriction = $('#accessRestriction').val();
+            const secureLogon = $('#secureLogon').val();
+            const privilegedPrograms = $('#privilegedPrograms').val();
+
+            // Generate the policy content
+            const policyContent = `
+                <h3>${policyType}</h3>
+                <h4>Policy Owner: ${policyOwner}</h4>
+                <h4>Effective Date: ${effectiveDate}</h4>
+                <h4>Purpose</h4>
+                <p>${purpose}</p>
+                <h4>Scope</h4>
+                <p>${scope}</p>
+                <h4>General Requirements</h4>
+                <p>${generalRequirements}</p>
+                <h4>Business Requirements</h4>
+                <p>${businessRequirements}</p>
+                <h4>Role-Based Access Control (RBAC)</h4>
+                <p>${rbac}</p>
+                <h4>Multi-Factor Authentication (MFA)</h4>
+                <p>${mfa}</p>
+                <h4>Access to Networks</h4>
+                <p>${networkAccess}</p>
+                <h4>Customer Access Management</h4>
+                <p>${customerAccess}</p>
+                <h4>User Access Management</h4>
+                <p>${userAccessManagement}</p>
+                <h4>User Registration and Deregistration</h4>
+                <p>${userRegistration}</p>
+                <h4>User Access Provisioning</h4>
+                <p>${userAccessProvisioning}</p>
+                <h4>Privileged Access Management</h4>
+                <p>${privilegedAccess}</p>
+                <h4>User Access Reviews</h4>
+                <p>${userAccessReviews}</p>
+                <h4>Removal & Adjustment of Access Rights</h4>
+                <p>${accessRights}</p>
+                <h4>Segregation of Duties</h4>
+                <p>${segregationOfDuties}</p>
+                <h4>Password Policy</h4>
+                <p>${passwordPolicy}</p>
+                <h4>Information Access Restriction</h4>
+                <p>${accessRestriction}</p>
+                <h4>Secure Log-on Procedures</h4>
+                <p>${secureLogon}</p>
+                <h4>Use of Privileged Utility Programs</h4>
+                <p>${privilegedPrograms}</p>
+            `;
+
+            // Show the policy content in the HTML
+            $('#policyOutput').html(policyContent);
+
+            // Move to the next step to show the generated policy
+            nextStep();
+        }
+
+
+        function submitPolicy() {
+            alert('Your policy draft has been submitted!');
+            // Add further functionality here if needed
+        }
+
+        $(document).ready(function () {
+            showStep(currentStep);
+        });
+
+        function generatePDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF({
+                unit: 'pt',  // use points for more precise control
+                format: 'a4'
+            });
+
+            // Set margin
+            const marginLeft = 40;
+            const marginTop = 40;
+            const lineHeight = 20;
+            let cursorY = marginTop;
+
+            // Set font size
+            doc.setFontSize(12);
+
+            // Get the policy content
+            const contentSections = [
+                { title: "Policy Type", content: $('input[name="policyType"]:checked').val() },
+                { title: "Policy Owner", content: $('#policyOwner').val() },
+                { title: "Effective Date", content: $('#effectiveDate').val() },
+                { title: "Purpose", content: $('#purpose').val() },
+                { title: "Scope", content: $('#scope').val() },
+                { title: "General Requirements", content: $('#generalRequirements').val() },
+                { title: "Business Requirements", content: $('#businessRequirements').val() },
+                { title: "Role-Based Access Control (RBAC)", content: $('#rbac').val() },
+                { title: "Multi-Factor Authentication (MFA)", content: $('#mfa').val() },
+                { title: "Access to Networks", content: $('#networkAccess').val() },
+                { title: "Customer Access Management", content: $('#customerAccess').val() },
+                { title: "User Access Management", content: $('#userAccessManagement').val() },
+                { title: "User Registration and Deregistration", content: $('#userRegistration').val() },
+                { title: "User Access Provisioning", content: $('#userAccessProvisioning').val() },
+                { title: "Privileged Access Management", content: $('#privilegedAccess').val() },
+                { title: "User Access Reviews", content: $('#userAccessReviews').val() },
+                { title: "Removal & Adjustment of Access Rights", content: $('#accessRights').val() },
+                { title: "Segregation of Duties", content: $('#segregationOfDuties').val() },
+                { title: "Password Policy", content: $('#passwordPolicy').val() },
+                { title: "Information Access Restriction", content: $('#accessRestriction').val() },
+                { title: "Secure Log-on Procedures", content: $('#secureLogon').val() },
+                { title: "Use of Privileged Utility Programs", content: $('#privilegedPrograms').val() },
+            ];
+
+            // Iterate over sections and add to PDF
+            contentSections.forEach(section => {
+                // Add title
+                doc.setFont('helvetica', 'bold');
+                doc.text(section.title, marginLeft, cursorY);
+                cursorY += lineHeight;  // move to next line
+
+                // Add content
+                doc.setFont('helvetica', 'normal');
+                const splitContent = doc.splitTextToSize(section.content, 500);  // wrap text to fit within margins
+                doc.text(splitContent, marginLeft, cursorY);
+                cursorY += (splitContent.length * lineHeight) + lineHeight;  // add space between sections
+
+                // Check if cursor goes beyond page height and add a new page if necessary
+                if (cursorY > 750) {
+                    doc.addPage();
+                    cursorY = marginTop;  // reset cursor for new page
+                }
+            });
+
+            // Save the generated PDF
+            doc.save('Policy_Draft.pdf');
+        }
+
+
+
+    </script>
 
 </body>
 
