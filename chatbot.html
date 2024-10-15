@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Chat Widget</title>
+    <style>
+        /* Updated styling for a larger chat widget centered in the page */
+        #chat-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px; /* Increased width */
+            height: 600px; /* Increased height */
+            background-color: #f1f1f1; /* Default chat box background color */
+            border-radius: 10px;
+            border: 2px solid #19fb04;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-family: Arial, sans-serif;
+        }
+
+        #chat-header {
+            background-color: #010101;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+            font-size: 18px;
+        }
+
+        #chat-content {
+            padding: 15px;
+            height: 450px;
+            overflow-y: auto;
+            background-color: #fff;
+        }
+
+        #chat-content p {
+            margin: 5px 0;
+        }
+
+        /* Styling for user messages */
+        .user-message {
+            color: #1E90FF;
+            font-weight: bold;
+        }
+
+        /* Styling for bot responses */
+        .bot-message {
+            color: #1aef1a;
+            font-weight: bold;
+        }
+
+        #user-message {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            width: calc(100% - 40px);
+            margin-right: 5px;
+        }
+
+        #send-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #send-button:hover {
+            background-color: #45a049;
+        }
+
+        #chat-input {
+            padding: 15px;
+            display: flex;
+        }
+
+        /* Background from original page */
+        body.is-preload {
+            background: #000; /* Fallback color */
+        }
+
+        #bg {
+            background-image: url('images/5471.jpg'); /* Update to the image path you're using */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body class="is-preload">
+    <!-- Background Image -->
+    <div id="bg"></div>
+
+    <!-- Chat Box -->
+    <div id="chat-box">
+        <div id="chat-header">Your Personalized ISO 27001 Chat Friend!</div>
+        <div id="chat-content">
+            <!-- Chat messages will appear here -->
+        </div>
+        <div id="chat-input">
+            <input type="text" id="user-message" placeholder="Type your message human..." />
+            <button id="send-button" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        const responses = {
+            // Fun questions
+            "Hi, how is your day going?": "Oh you know, living the AI dream!",
+            "What is your favorite hobby?": "Chatting with you, of course!",
+            
+            // Policy-related questions
+            "What is an Information Security Policy?": "It's how you protect information assets.",
+            "What is the scope of a policy?": "It defines what systems and processes it covers.",
+            "Who should be the policy owner?": "The person responsible for maintaining the policy.",
+            "Why have an effective date?": "It shows when the policy is applied.",
+            "What is MFA?": "Multi-Factor Authentication adds extra security layers.",
+            "What are ISO 27001 controls?": "They are measures to protect information assets.",
+            "What is RBAC?": "Role-Based Access Control limits access based on roles.",
+            "When should access be reviewed?": "Regularly to ensure it's still appropriate.",
+            "What’s in a password policy?": "It includes rules on complexity and expiration.",
+            "What is Segregation of Duties?": "It prevents one person from having too much control."
+        };
+
+        function sendMessage() {
+            const messageInput = document.getElementById('user-message');
+            const chatContent = document.getElementById('chat-content');
+            const message = messageInput.value;
+
+            if (message.trim() !== "") {
+                // Create a new chat bubble for user message
+                const userMessage = document.createElement('p');
+                userMessage.textContent = `You: ${message}`;
+                userMessage.classList.add('user-message');
+                chatContent.appendChild(userMessage);
+
+                // Simulate bot response with predefined answers
+                const botMessage = document.createElement('p');
+                if (responses[message]) {
+                    botMessage.textContent = `Bot: ${responses[message]}`;
+                } else {
+                    botMessage.textContent = "Bot: I'm just a simple bot! You can ask me about ISO 27001 policies or fun questions!";
+                }
+                botMessage.classList.add('bot-message');
+                chatContent.appendChild(botMessage);
+
+                // Clear the input field after sending
+                messageInput.value = '';
+
+                // Scroll to the bottom of the chat content
+                chatContent.scrollTop = chatContent.scrollHeight;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
