@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compliance Quest Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black; /* Black background */
+            color: white; /* White text for better visibility */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            flex-direction: column;
+        }
+
+        .quiz-container {
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent for style */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+        }
+
+        h2 {
+            font-size: 28px;
+            color: white; /* White heading */
+        }
+
+        p, label, button {
+            font-size: 20px;
+            color: white; /* White text for buttons, labels, etc. */
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #198b9d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .question {
+            margin: 20px 0;
+        }
+
+        .question.correct {
+            color: green;
+        }
+
+        .question.incorrect {
+            color: red;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .progress-bar {
+            margin-bottom: 20px;
+            height: 20px;
+            background-color: #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: #4caf50;
+            width: 0;
+        }
+
+        /* Bigger Monkey in the Quiz Box */
+        .monkey-container {
+            position: absolute;
+            top: -70px; /* Adjust to keep within the box */
+            left: 50%;
+            transform: translateX(-50%);
+            transform-origin: top center; /* Sets the pivot point for the swinging */
+            animation: swing 3s ease-in-out infinite;
+        }
+
+        @keyframes swing {
+            0% { transform: translateX(-50%) rotate(0deg); }
+            25% { transform: translateX(-50%) rotate(15deg); }
+            50% { transform: translateX(-50%) rotate(0deg); }
+            75% { transform: translateX(-50%) rotate(-15deg); }
+            100% { transform: translateX(-50%) rotate(0deg); }
+        }
+
+        .monkey {
+            width: 140px; /* Increase monkey size */
+        }
+
+        /* Speech Bubble */
+        .speech-bubble {
+            position: absolute;
+            top: -50px; /* Align with the monkey's height */
+            left: 95%; /* Move the bubble directly next to the monkey */
+            background-color: white;
+            padding: 8px;
+            border-radius: 10px;
+            color: black;
+            font-size: 14px;
+            width: max-content;
+            text-align: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -10px; /* Place tail directly at the edge pointing to the monkey */
+            transform: translateY(-50%);
+            border-width: 10px;
+            border-style: solid;
+            border-color: transparent white transparent transparent;
+        }
+
+        /* Result Text Styling */
+        #result-title {
+            font-size: 30px; /* Larger for emphasis */
+            margin-bottom: 10px;
+        }
+
+        #result-message {
+            font-size: 24px; /* Bigger message font */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container">
+        <!-- Bigger Swinging Monkey Inside the Quiz Container -->
+        <div class="monkey-container">
+            <img class="monkey" src="images/monkey.png" alt="Swinging Monkey">
+            <!-- Speech Bubble -->
+            <div class="speech-bubble">
+                Am I distracting you?
+            </div>
+        </div>
+
+        <h2>Compliance Quest: Let's Draft the Perfect Compliance!</h2>
+        <p id="mission-text"></p> <!-- This will use the typewriter effect for the full mission statement -->
+        
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+
+        <!-- Quiz Form with 7 Questions -->
+        <div id="question-1" class="question">
+            <label>1. What is the first step in drafting a compliance policy?</label><br>
+            <button onclick="checkAnswer('q1', 'Define the purpose of the policy')">Define the purpose of the policy</button>
+            <button onclick="checkAnswer('q1', 'Assign roles and responsibilities')">Assign roles and responsibilities</button>
+            <button onclick="checkAnswer('q1', 'Review legal requirements')">Review legal requirements</button>
+        </div>
+
+        <div id="question-2" class="question hidden">
+            <label>2. What should be included in compliance controls?</label><br>
+            <button onclick="checkAnswer('q2', 'Monitoring mechanisms')">Monitoring mechanisms</button>
+            <button onclick="checkAnswer('q2', 'Employee salaries')">Employee salaries</button>
+            <button onclick="checkAnswer('q2', 'Company revenue reports')">Company revenue reports</button>
+        </div>
+
+        <div id="question-3" class="question hidden">
+            <label>3. Why is it important to review compliance policies regularly?</label><br>
+            <button onclick="checkAnswer('q3', 'To ensure they align with current laws')">To ensure they align with current laws</button>
+            <button onclick="checkAnswer('q3', 'To update the company logo')">To update the company logo</button>
+            <button onclick="checkAnswer('q3', 'To increase employee salaries')">To increase employee salaries</button>
+        </div>
+
+        <div id="question-4" class="question hidden">
+            <label>4. What is the role of compliance audits?</label><br>
+            <button onclick="checkAnswer('q4', 'To identify gaps in compliance')">To identify gaps in compliance</button>
+            <button onclick="checkAnswer('q4', 'To monitor company sales')">To monitor company sales</button>
+            <button onclick="checkAnswer('q4', 'To review employee contracts')">To review employee contracts</button>
+        </div>
+
+        <div id="question-5" class="question hidden">
+            <label>5. Who is responsible for implementing compliance policies?</label><br>
+            <button onclick="checkAnswer('q5', 'All employees')">All employees</button>
+            <button onclick="checkAnswer('q5', 'Only management')">Only management</button>
+            <button onclick="checkAnswer('q5', 'Legal department')">Legal department</button>
+        </div>
+
+        <div id="question-6" class="question hidden">
+            <label>6. What should be done if a compliance violation is identified?</label><br>
+            <button onclick="checkAnswer('q6', 'Report it immediately')">Report it immediately</button>
+            <button onclick="checkAnswer('q6', 'Ignore it')">Ignore it</button>
+            <button onclick="checkAnswer('q6', 'Discuss it during the annual review')">Discuss it during the annual review</button>
+        </div>
+
+        <div id="question-7" class="question hidden">
+            <label>7. Why is employee training important in compliance?</label><br>
+            <button onclick="checkAnswer('q7', 'To ensure understanding of regulations')">To ensure understanding of regulations</button>
+            <button onclick="checkAnswer('q7', 'To improve job satisfaction')">To improve job satisfaction</button>
+            <button onclick="checkAnswer('q7', 'To meet legal requirements only')">To meet legal requirements only</button>
+        </div>
+
+        <div id="result" class="hidden">
+            <h3 id="result-title"></h3>
+            <p id="result-message"></p>
+        </div>
+    </div>
+
+    <script>
+        let currentQuestion = 1;
+        let correctAnswers = 0;
+        const totalQuestions = 7;
+
+        const correctAnswersList = {
+            q1: 'Define the purpose of the policy',
+            q2: 'Monitoring mechanisms',
+            q3: 'To ensure they align with current laws',
+            q4: 'To identify gaps in compliance',
+            q5: 'All employees',
+            q6: 'Report it immediately',
+            q7: 'To ensure understanding of regulations'
+        };
+
+        function checkAnswer(questionId, answer) {
+            if (answer === correctAnswersList[questionId]) {
+                correctAnswers++;
+            }
+            document.getElementById('question-' + currentQuestion).classList.add('hidden');
+            currentQuestion++;
+            if (currentQuestion <= totalQuestions) {
+                document.getElementById('question-' + currentQuestion).classList.remove('hidden');
+            } else {
+                displayResult();
+            }
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const progress = document.getElementById('progress');
+            const width = (currentQuestion - 1) / totalQuestions * 100;
+            progress.style.width = width + '%';
+        }
+
+        function displayResult() {
+            const resultTitle = document.getElementById('result-title');
+            const resultMessage = document.getElementById('result-message');
+            const percentage = Math.round((correctAnswers / totalQuestions) * 100); // Rounded percentage
+        
+            if (percentage > 50) {
+                resultTitle.innerHTML = "Wow, look at you, compliance genius!";
+                resultTitle.style.color = "green"; // Change title color to green for positive results
+                resultMessage.innerHTML = `You got ${correctAnswers} out of ${totalQuestions} correct (${percentage}%). You're well on your way to mastering compliance.`;
+            } else {
+                resultTitle.innerHTML = "Maybe compliance isn’t your strong suit...";
+                resultTitle.style.color = "red"; // Change title color to red for negative results
+                resultMessage.innerHTML = `You only got ${correctAnswers} out of ${totalQuestions} correct (${percentage}%). Time to brush up on those policies!`;
+            }
+        
+            document.getElementById('result').classList.remove('hidden');
+        }
+        
+        
+
+        // Mission Impossible Typewriter Effect
+        const missionText = "Your mission, should you choose to accept it, is to draft the perfect compliance policy for a fictional company. Answer the questions correctly to move forward! This message will self-destruct in 10 seconds... just kidding!";
+        let i = 0;
+        const speed = 50; // Speed of typing
+
+        function typeWriter() {
+            if (i < missionText.length) {
+                document.getElementById("mission-text").innerHTML += missionText.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+            }
+        }
+
+        window.onload = function() {
+            typeWriter(); // Trigger typewriter effect on load
+        };
+    </script>
+
+</body>
+</html>
