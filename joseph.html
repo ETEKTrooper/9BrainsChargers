@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Framework Comparison - Flipping Cards</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            padding-top: 30px; /* Add padding at the top to make space for the title */
+            color: #333;
+            text-align: center;
+        }
+
+        /* Title section */
+        .page-title {
+            font-size: 2.8em;
+            font-weight: bold;
+            color: #333;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Adding shadow to the title */
+            margin-bottom: 40px; /* Space below the title */
+        }
+
+        .framework-section {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+
+        .framework-title {
+            font-size: 2.4em;
+            font-weight: bold;
+            color: #01579b;
+            margin-right: 40px;
+            text-align: left;
+            flex-shrink: 0;
+            width: 160px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Flip card styles */
+        .flip-card {
+            background-color: transparent;
+            width: 280px;
+            height: 180px;
+            perspective: 1000px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* Front and back of the card */
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.3em;
+            color: white;
+        }
+
+        .flip-card-front {
+            background-color: #01579b;
+            color: white;
+        }
+
+        .flip-card-back {
+            background-color: #333;
+            transform: rotateY(180deg);
+            font-size: 1.1em;
+        }
+
+        /* Colors for frameworks */
+        .framework-nist .flip-card-front {
+            background-color: #1e88e5;
+        }
+
+        .framework-iso .flip-card-front {
+            background-color: #43a047;
+        }
+
+        .framework-cis .flip-card-front {
+            background-color: #fb8c00;
+        }
+
+        /* Rating styles */
+        .rating {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #edd60f;
+        }
+
+        .comments {
+            color: #fff;
+            font-size: 1em;
+        }
+
+        /* Divider between frameworks */
+        .divider {
+            width: 100%;
+            height: 4px;
+            background-color: #333;
+            margin: 40px 0;
+        }
+
+        /* Image at the top-right corner with on and off glowing effect */
+        .top-right-image {
+            position: fixed;
+            top: 10px;
+            right: 48px;
+            width: 89px; /* Adjust the size of the image */
+            height: auto;
+            animation: glowing 3s infinite alternate; /* Glowing animation */
+        }
+        
+        @keyframes glowing {
+            0% {
+                filter: brightness(100%) saturate(80%); /* Normal state */
+            }
+            100% {
+                filter: brightness(120%) saturate(100%); /* Subtle glow */
+            }
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <!-- Image at the top right linking to kehinde.html -->
+    <a href="kehinde.html" target="_blank">
+        <img src="images/FAQ.png" alt="Go to Kehinde" class="top-right-image">
+    </a>
+
+    <!-- Title section -->
+    <div class="page-title">Framework Comparison</div>
+
+    <!-- NIST CSF Section -->
+    <div class="framework-section framework-nist">
+        <div class="framework-title">NIST CSF 2.0</div>
+        <div class="card-container">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        DE.AE-02: Detected Events Analyzed
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="rating">Rating: 8</div>
+                        <div class="comments">The plan includes event analysis, but further technical details on how events are analyzed would strengthen this.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        DE.AE-03: Event Data is Correlated
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="rating">Rating: 7</div>
+                        <div class="comments">More formalized processes for data from multiple sources could enhance the approach.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        DE.AE-04: Event Impact Determined
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="rating">Rating: 8</div>
+                        <div class="comments">The plan addresses incident severity (P0 to P3) and categorization, which meets this control.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="divider"></div>
+
+    <!-- ISO 27001 Section -->
+    <div class="framework-section framework-iso">
+        <div class="framework-title">ISO 27001</div>
+        <div class="card-container">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        A.5.1 - Information Security Policies
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="rating">Rating: 6</div>
+                        <div class="comments">The plan touches on security policies but lacks details about policy approval and how it's communicated to personnel and stakeholders.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        A.5.24 - Incident Management Planning
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="rating">Rating: 9</div>
+                        <div class="comments">The plan clearly addresses incident management processes and roles, fully satisfying this requirement.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        A.5.25 - Assessment of Security Events
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="rating">Rating: 8</div>
+                        <div class="comments">Events are categorized by severity (P0 to P3). More details on the assessment criteria could strengthen this further.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="divider"></div>
+
+    <!-- CIS v8.1 Section -->
+    <div class="framework-section framework-cis">
+        <div class="framework-title">CIS v8.1</div>
+        <div class="card-container">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        11.1 - Data Recovery Process
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="rating">Rating: 4</div>
+                        <div class="comments">The plan lacks a specific, documented data recovery process that details prioritization, scope, and backup security.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        17.1 - Incident Handling Personnel
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="rating">Rating: 9</div>
+                        <div class="comments">The roles of Incident Manager and IRT are clearly defined. Adding explicit backup roles could improve this further.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        17.2 - Contact Information for Reporting
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="rating">Rating: 8</div>
+                        <div class="comments">The plan includes contact information in Appendix A, but ensuring it's updated and accessible is important.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
