@@ -17,6 +17,27 @@
             padding: 0;
             flex-direction: column;
         }
+            /* Colorful gradient text for the paragraph */
+            #quiz-link-container p {
+                font-size: 1.5em;
+                background: linear-gradient(45deg, #ff6f61, #ffeb3b, #00e676, #3f51b5);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                font-weight: bold;
+            }
+
+            /* Colorful link with hover effect */
+            #quiz-link-container a {
+                font-size: 1.2em;
+                font-weight: bold;
+                color: #ff6f61; /* Initial color */
+                text-decoration: none;
+                transition: color 0.3s ease;
+            }
+
+            #quiz-link-container a:hover {
+                color: #00e676; /* Color changes on hover */
+            }
 
         .quiz-container {
             background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent for style */
