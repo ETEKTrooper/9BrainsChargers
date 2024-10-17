@@ -140,6 +140,26 @@
         #result-message {
             font-size: 24px; /* Bigger message font */
         }
+
+        /* Link Styling for Bottom-Right Position */
+        #quiz-link-container {
+            position: fixed;
+            bottom: 20px; /* Distance from the bottom */
+            right: 20px;  /* Distance from the right */
+            text-align: center;
+            color: white;
+        }
+
+        #quiz-link-container a {
+            color: #4caf50; /* Green color for the link */
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        #quiz-link-container a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -150,7 +170,7 @@
             <img class="monkey" src="images/monkey.png" alt="Swinging Monkey">
             <!-- Speech Bubble -->
             <div class="speech-bubble">
-                Am I distracting you?
+            Am I distracting you?
             </div>
         </div>
 
@@ -270,7 +290,6 @@
             document.getElementById('result').classList.remove('hidden');
         }
         
-        
 
         // Mission Impossible Typewriter Effect
         const missionText = "Your mission, should you choose to accept it, is to draft the perfect compliance policy for a fictional company. Answer the questions correctly to move forward! This message will self-destruct in 10 seconds... just kidding!";
@@ -289,6 +308,12 @@
             typeWriter(); // Trigger typewriter effect on load
         };
     </script>
+
+    <!-- Bottom-right link -->
+    <div id="quiz-link-container">
+        <p>What are all these questions? <br> Let's look deeper into the frameworks!!</p>
+        <a href="joseph.html" target="_blank">Click here</a>
+    </div>
 
 </body>
 </html>
